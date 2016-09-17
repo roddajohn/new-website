@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content_special %}
+  <div class="jumbotron">
+    <div class="container">
+      <font color="white">
+	<h1> The New York Parliamentary Debate League</h1>
+	<p>The first completely student run debate league</p>
+      </font>
+    </div>
+  </div> 
+  
+  <div class="learn-more">
+    <div class="container">
+      <div class="row">
+	<div class="col-md-4">
+	  <h3>Why Parli?</h3>
+	  <p>If you ask high school students what they think the point of high school is, you will get two answers, to prepare you for college, or to prepare you for the real world. Parliamentary Debate does both of these things. Parli is the largest collegiate style of debate and it prepares you for the real world, where you have to think of arguments on the spot. </p>
+	  <p><a href="{{ url_for('parli') }}">Learn More</a></p>
+	</div>
+	<div class="col-md-4">
+	  <h3>Tournaments</h3>
+	  <p>We host tournaments once a month at different schools around New York City. The first official tournament hosted by the New York Parliamentary Debate League will be on October 29th at Horace Mann. </p>
+	  <p><a href="{{ url_for('tournaments') }}">Learn More</a></p>
+	</div>
+	<div class="col-md-4">
+	  <h3>Student Run</h3>
+	  <p>Unlike many other debate leagues, the NY Parliamentary Debate League is completely student run. We are a group of three schools that have come together in order to spread the style of Parliamentary Debate and help out other schools.</p>
+	  <p><a href="{{ url_for('about_us') }}">Learn More</a></p>
+	</div>
+	
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+

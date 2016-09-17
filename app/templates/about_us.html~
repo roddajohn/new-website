@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% set active_page = "about_us" %}
+
+{% block content %}
+  <div class="container">
+      <h2> The League </h2>
+      <p>The New York Parliamentary Debate League is the first standalone high school parliamentary debate league in the New York City area.  It is also one of the first student-run leagues in the country.  It was founded by the leaders from three New York City schools:</p>
+  </div>
+  <div class="container">
+  <div class="col-sm-4">
+    <h2> Horace Mann </h2>
+    <p> Radhika Mehta and Evan Frommer are the founders of the Horace Mann Parliamentary Debate Team. They both have years of experience in other debate styles including Public Forum, Model UN, Mock Trial, and Parliamentary Debate. They have been able to rally support from their school community. </p>
+  </div>
+  <div class="col-sm-4">
+    <h2> Stuyvesant </h2>
+    <p> The Stuyvesant team was founded by Rodda John, a pioneer of high school parliamentary debate. Rodda has years of experience with Parliamentary Debate. He started debating in the middle school circuit and quickly rose to the top of his league. When he entered high school he worked with the NYCUDL to found their parliamentary debate league and manage their tournaments. </p>
+  </div>
+  <div class="col-sm-4">
+    <h2> Dalton </h2>
+    <p>The Dalton Team was founded by Davey Morse and Grant Gordon. The two are also Model UN members before creating the Parliamentary Debate Team with the help of Bryson Weise.</p>
+  </div>
+  </div>
+  <div class="container">
+    <h2> Board Members </h2>
+    <p> Board Members: Rodda John, Bryson Weise, Davey Morse, Grant Gordon, Evan Frommer, and Radhika Mehta </p>
+  </div>
+  
+{% endblock %}
+

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% set active_page="contact_us" %}
+
+{% block content %}
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+    <h1>Contact Us</h1>
+    <p>
+      Email: nyparli@gmail.com<br>
+      Phone: 917-860-0503
+    </p>
+    
+    <h3>Executive Director</h3>
+    <p>
+      FIRSTNAME LASTNAME<br>
+      Email: EMAIL<br>
+      Phone: PHONE NUMBER
+    </p>
+    
+    <h3>Assistant Executive Director</h3>
+    <p>
+      FIRSTNAME LASTNAME<br>
+      Email: Email<br>
+      Phone: PHONE NUMBER
+    </p>
+  </div>
+  <div class="col-sm-4"></div>
+{% endblock %}
