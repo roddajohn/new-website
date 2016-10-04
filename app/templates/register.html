@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+
+{% set active_page = "register" %}
+
+{% block content %}
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+    <br>
+    <br>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+	<center>
+	  <h4>Register for the Horace Mann Invitational</h4>
+	</center>
+      </div>
+      <div class="container">
+	<br>
+	<p>The current cap is 10 teams.<br>To register more than 10 teams, please come back after the deadline.</p>
+	<br>
+	<p><b>The registration deadline is October 15th</b></p>
+	<br>
+	<p><b>Each school is required to provide 1 judge per 2 teams</b><br>If this is impossible, please email director@nyparli.org</p>
+	<h2>Current Registration Cost: <b id="cost">$20</b></h2>
+	<p>Registration payments must be checks made out to Horace Mann</p>
+	<br>
+	<br>
+	<p><b>Registration cannot be edited through this interface.  If you need to make changes, please email director@nyparli.org</b></p>
+      </div>
+      <div class="panel-body">
+	<form class="form" action="" method="POST">
+	  <div class="form-group">
+	    <label>Number of Teams</label>
+	    <select id="num_teams" name="num_teams" class="form-control" onchange="update_correctly()">
+	      <option value="1">1</option>
+	      <option value="2">2</option>
+	      <option value="3">3</option>
+	      <option value="4">4</option>
+	      <option value="5">5</option>
+	      <option value="6">6</option>
+	      <option value="7">7</option>
+	      <option value="8">8</option>
+	      <option value="9">9</option>
+	      <option value="10">10</option>
+	    </select>
+	  </div>
+	  <br>
+	  <center>
+	    <label>Team #1</label>
+	  </center>
+	  <div class="form-inline">
+	    <div class="container">
+	      <label class="">Member #1</label>
+	      <input type="text" name="1_1" id="1_1" class="form-control">
+	      <br>
+	      <br>
+	      <label class="">Member #2</label>
+	      <input type="text" name="1_2" id="1_2" class="form-control">
+	      <br><br>
+	    </div>
+	  </div>
+	  <center>
+	    <label id="t_2" class="hidden">Team #2</label>
+	  </center>
+	  <div id="t_f_2" class="form-inline hidden">
+	    <div class="container">
+	      <label class="">Member #1</label>
+	      <input type="text" name="2_1" id="2_1" class="form-control">
+	      <br>
+	      <br>
+	      <label class="">Member #2</label>
+	      <input type="text" name="2_2" id="2_2" class="form-control">
+	      <br><br>
+	    </div>
+	  </div>
+	  <center>
+	    <label id="t_3" class="hidden">Team #3</label>
+	  </center>
+	  <div id="t_f_3" class="form-inline hidden">
+	    <div class="container">
+	      <label class="">Member #1</label>
+	      <input type="text" name="3_1" id="3_1" class="form-control">
+	      <br>
+	      <br>
+	      <label class="">Member #2</label>
+	      <input type="text" name="3_2" id="3_2" class="form-control">
+	      <br><br>
+	    </div>
+	  </div>
+	  <center>
+	    <label id="t_4" class="hidden">Team #4</label>
+	  </center>
+	  <div id="t_f_4" class="form-inline hidden">
+	    <div class="container">
+	      <label class="">Member #1</label>
+	      <input type="text" name="4_1" id="4_1" class="form-control">
+	      <br>
+	      <br>
+	      <label class="">Member #2</label>
+	      <input type="text" name="4_2" id="4_2" class="form-control">
+	      <br><br>
+	    </div>
+	  </div>
+	  <center>
+	    <label id="t_5" class="hidden">Team #5</label>
+	  </center>
+	  <div id="t_f_5" class="form-inline hidden">
+	    <div class="container">
+	      <label class="">Member #1</label>
+	      <input type="text" name="5_1" id="5_1" class="form-control">
+	      <br>
+	      <br>
+	      <label class="">Member #2</label>
+	      <input type="text" name="5_2" id="5_2" class="form-control">
+	      <br><br>
+	    </div>
+	  </div>
+	  <center>
+	    <label id="t_6" class="hidden">Team #6</label>
+	  </center>
+	  <div id="t_f_6" class="form-inline hidden">
+	    <div class="container">
+	      <label class="">Member #1</label>
+	      <input type="text" name="6_1" id="6_1" class="form-control">
+	      <br>
+	      <br>
+	      <label class="">Member #2</label>
+	      <input type="text" name="6_2" id="6_2" class="form-control">
+	      <br><br>
+	    </div>
+	  </div>
+	  <center>
+	    <label id="t_7" class="hidden">Team #7</label>
+	  </center>
+	  <div id="t_f_7" class="form-inline hidden">
+	    <div class="container">
+	      <label class="">Member #1</label>
+	      <input type="text" name="7_1" id="7_1" class="form-control">
+	      <br>
+	      <br>
+	      <label class="">Member #2</label>
+	      <input type="text" name="7_2" id="7_2" class="form-control">
+	      <br><br>
+	    </div>
+	  </div>
+	  <center>
+	    <label id="t_8" class="hidden">Team #8</label>
+	  </center>
+	  <div id="t_f_8" class="form-inline hidden">
+	    <div class="container">
+	      <label class="">Member #1</label>
+	      <input type="text" name="8_1" id="8_1" class="form-control">
+	      <br>
+	      <br>
+	      <label class="">Member #2</label>
+	      <input type="text" name="8_2" id="8_2" class="form-control">
+	      <br><br>
+	    </div>
+	  </div>
+	  <center>
+	    <label id="t_9" class="hidden">Team #9</label>
+	  </center>
+	  <div id="t_f_9" class="form-inline hidden">
+	    <div class="container">
+	      <label class="">Member #1</label>
+	      <input type="text" name="9_1" id="9_1" class="form-control">
+	      <br>
+	      <br>
+	      <label class="">Member #2</label>
+	      <input type="text" name="9_2" id="9_2" class="form-control">
+	      <br><br>
+	    </div>
+	  </div>
+	  <center>
+	    <label id="t_10" class="hidden">Team #10</label>
+	  </center>
+	  <div id="t_f_10" class="form-inline hidden">
+	    <div class="container">
+	      <label class="">Member #1</label>
+	      <input type="text" name="10_1" id="10_1" class="form-control">
+	      <br>
+	      <br>
+	      <label class="">Member #2</label>
+	      <input type="text" name="10_2" id="10_2" class="form-control">
+	    </div>
+	  </div>
+	  <br>
+	  <hr>
+	  <div class="container">
+	    <div class="form-inline">
+	      <label>Judge #1</label>
+	      <input type="text" name="j_1" id="j_1" class="form-control">
+	      <br><br>
+	    </div>
+	    <div id="j_h_2" class="form-inline hidden">
+	      <label>Judge #2</label>
+	      <input type="text" name="j_2" id="j_2" class="form-control">
+	      <br><br>
+	    </div>
+	    <div id="j_h_3" class="form-inline hidden">
+	      <label>Judge #3</label>
+	      <input type="text" name="j_3" id="j_3" class="form-control">
+	      <br><br>
+	    </div>
+	    <div id="j_h_4" class="form-inline hidden">
+	      <label>Judge #4</label>
+	      <input type="text" name="j_4" id="j_4" class="form-control">
+	      <br><br>
+	    </div>
+	    <div id="j_h_5" class="form-inline hidden">
+	      <label>Judge #5</label>
+	      <input type="text" name="j_5" id="j_5" class="form-control">
+	      <br><br>
+	    </div>
+	    <br>
+	  </div>
+	  <input type="submit" id="submit" class="btn btn-primary btn-group-justified" value="Register">
+	</form>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3"></div>
+
+  <script src="static/js/register.js"></script>
+
+{% endblock %}

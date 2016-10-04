@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% set active_page = "admin_view_registration" %}
+
+{% block content %}
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+    <center>
+      <h1>Administrator View Registration ({{ user_to_get.school }})</h1>
+      <br>
+      <br>
+      <h2>Total Registration Cost: ${{ num_teams|int * 20 }}</h2>
+    </center>
+    <br>
+    {% for team in teams.split(';') %}
+      {% if not team == '' %}
+	Team: {{ team.split(',')[0] }}, {{ team.split(',')[1] }}
+	<br>
+      {% endif %}
+    {% endfor %}
+    <br>
+    {% for judge in judges.split(',') %}
+      {% if not judge == '' %}
+	Judge: {{ judge }}
+	<br>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="col-sm-3"></div>
+
+   
+
+{% endblock %}

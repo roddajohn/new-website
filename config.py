@@ -13,3 +13,5 @@ SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 WTF_CSRF_ENABLED = True
 # Secret key for the hashes
 SECRET_KEY = 'THIS IS A SECRET KEY'
+
+ELEMENTS_PER_PAGE = 10

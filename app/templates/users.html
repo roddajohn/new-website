@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% set active_page = "users" %}
+
+{% block content %}
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <center>
+      <h1>Users</h1>
+    </center>
+    <br>
+    <br>
+    <table class="table table-bordered">
+      <tr>
+	<td>Name</td>
+	<td>School</td>
+	<td>Actions</td>
+      </tr>
+      {% for u in users.items %}
+	<tr>
+	  <td>{{ u.fname }} {{ u.lname }}</td>
+	  <td>{{ u.school }}</td>
+	  <td>
+	    <a class="btn btn-primary" href="{{ url_for('toggle_admin', username = u.username) }}">{% if u.check_permission('admin') %}Remove Admin Privledges{% else %}Make Admin{% endif %}</a>
+	    <a class="btn btn-primary" href="{{ url_for('admin_view_registration', username = u.username) }}">View Registration</a>
+	  </td>
+      {% endfor %}
+    </table>
+    {{ macros.render_pagination(users, 'users') }}
+  </div>
+  <div class="col-sm-2"></div>
+  <center>
+
+{% endblock %}
+

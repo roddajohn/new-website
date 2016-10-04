@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 
-{% set title = title | default('New York Parliamentary Debate League') %}
+{% import "macros.html" as macros %}
+
+{% set title = title | default('New York Parliamentary Debate') %}
 
 <html lang="en">
   <head>
@@ -53,25 +55,28 @@
       margin: 20px 0;
       }
       .jumbotron {
-      background-image: url({{ url_for('static', filename='img/parlilogo.jpg') }});
       background-size: cover;
+      background-image: url("static/img/parlilogo.jpg")
       }
     </style>
   </head>
   <body>
     
     {% set navigation_bar = [
-    ('index', 'index', 'Home'),
+    ('index', 'index', 'Home', 'all'),
     ('dropdown',
       (('parli', 'Why Parli?'),
       ('faqs', 'New Members\' FAQ'),
-      ('join_us', 'Join Us!')), 'Information for Prospective Members'),
+      ('join_us', 'Join Us!')), 'Information for Prospective Members', 'all'),
     ('dropdown',
       (('tournaments', 'Tournament Schedule'),
       ('rules_and_guides', 'Rules and Guides')),
-      'Information for Members'),
-    ('about_us', 'about_us', 'About Us'),
-    ('contact_us', 'contact_us', 'Contact Us')
+      'Information for Members', 'all'),
+    ('about_us', 'about_us', 'About Us', 'all'),
+    ('contact_us', 'contact_us', 'Contact Us', 'all'),
+    ('register', 'register', 'Register for the HM Invitational', 'register'),
+    ('view_registration', 'view_registraion', 'View Registration', 'view_registration'),
+    ('users', 'users', 'Users', 'admin')
     ]
     %}
     {% set active_page = active_page | default('index') %}
@@ -83,12 +88,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>                        
 	  </button>
-	  <a class="navbar-brand" href="{{ url_for('index') }}">NY Parli</a>
+	  <a class="navbar-brand" href="{{ url_for('index') }}">New York Parliamentary Debate League</a>
 	</div>
 	<div class="collapse navbar-collapse" id="myNavbar">
 	  <ul class="nav navbar-nav">
-	    {% for href, id, caption in navigation_bar %}
-	      {% if href == "dropdown" %}
+	    {% for href, id, caption, permission in navigation_bar %}
+	      {% if href == "dropdown" and ((user and user.check_permission(permission)) or permission == 'all') %}
 		<li
 		   {% for href_d, caption_d in id if href_d == active_page %}
 		     class="active"
@@ -104,15 +109,22 @@
 		   </ul>
 		</li>
 	      {% else %}
-		<li {% if href == active_page %} class="active" {% endif %}>
-		  <a href="{{ url_for(href) }}">{{ caption | e }}</a>
-		</li>
+		{% if (user and user.check_permission(permission)) or permission == 'all' %}
+		  <li {% if href == active_page %} class="active" {% endif %}>
+		    <a href="{{ url_for(href) }}">{{ caption | e }}</a>
+		  </li>
+		{% endif %}
 	      {% endif %}
 	    {% endfor %}
 	    
 	  </ul>
 	  <ul class="nav navbar-nav navbar-right">
-	  </ul>
+	    {% if not user %}
+	      <li {% if active_page == "create" %}class="active"{% endif %}><a href="{{ url_for('create') }}"><span class="glyphicon glyphicon-user"></span> Create an Account</a></li>
+            <li {% if active_page == "login" %}class="active"{% endif %}><a href="{{ url_for('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	  {% else %}
+	      <li><a href="{{ url_for('logout') }}">Logout</a></li>
+	  {% endif %}
 	</div>
       </div>
     </nav>
@@ -136,7 +148,7 @@
       </div>
     </div>
     <footer class="container-fluid text-center">
-      <p>&copy; New York Parliamentary Debate League 2016 -- Version 0.0.1</p>
+      <p>&copy; New York Parliamentary Debate League -- Version 1.1.0</p>
     </footer>
   </body>
 </html>
