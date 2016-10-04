@@ -5,42 +5,49 @@ from .forms import *
 @app.route('/', methods=['GET'])
 @app.route('/index', methods=['GET'])
 def index():
+    user = None
     if 'username' in session:
         user = models.User.query.filter_by(username = session['username']).first()
     return render_template("index.html", user = user)
 
 @app.route('/parli', methods=['GET'])
 def parli():
+    user = None
     if 'username' in session:
         user = models.User.query.filter_by(username = session['username']).first()
     return render_template("parli.html", user = user)
 
 @app.route('/tournaments', methods=['GET'])
 def tournaments():
+    user = None
     if 'username' in session:
         user = models.User.query.filter_by(username = session['username']).first()
     return render_template("tournament.html", user = user)
 
 @app.route('/contact_us', methods=['GET'])
 def contact_us():
+    user = None
     if 'username' in session:
         user = models.User.query.filter_by(username = session['username']).first()
     return render_template("contact_us.html", user = user)
 
 @app.route('/about_us', methods=['GET'])
 def about_us():
+    user = None
     if 'username' in session:
         user = models.User.query.filter_by(username = session['username']).first()
     return render_template("about_us.html", user = user)
 
 @app.route('/join_us', methods=['GET'])
 def join_us():
+    user = None
     if 'username' in session:
         user = models.User.query.filter_by(username = session['username']).first()
     return render_template("join_us.html", user = user)
 
 @app.route('/faqs', methods=['GET'])
 def faqs():
+    user = None
     if 'username' in session:
         user = models.User.query.filter_by(username = session['username']).first()
     return render_template("faq.html", user = user)
